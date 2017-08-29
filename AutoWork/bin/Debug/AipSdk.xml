@@ -1,0 +1,483 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AipSdk</name>
+    </assembly>
+    <members>
+        <member name="F:Baidu.Aip.AipHttpRequest.Uri">
+            <summary>
+            不带query
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.AipHttpRequest.GenerateDevWebRequest(System.String)">
+            <summary>
+            生成AI的Web请求
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.AipHttpRequest.GenerateCloudRequest(System.String,System.String)">
+            <summary>
+            生成云的Web请求
+            </summary>
+            <param name="ak"></param>
+            <param name="sk"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Baidu.Aip.ImageCensor.AntiPorn">
+            <summary>
+            黄反相关
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.ImageCensor.AntiPorn.Detect(System.Byte[])">
+            <summary>
+            黄反识别
+            </summary>
+            <param name="image">图像字节数组</param>
+            <returns>识别</returns>
+        </member>
+        <member name="M:Baidu.Aip.ImageCensor.AntiPorn.DetectGif(System.Byte[])">
+            <summary>
+            GIF色情图像识别
+            </summary>
+            <param name="image">图像字节数组</param>
+            <returns></returns>
+        </member>
+        <member name="T:Baidu.Aip.ImageCensor.AntiTerror">
+            <summary>
+            暴恐
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.ImageCensor.AntiTerror.Detect(System.Byte[])">
+            <summary>
+            暴恐识别
+            </summary>
+            <param name="image">图像字节数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Auth.OpenApiFetchToken(System.String,System.String)">
+            <summary>
+            获取OpenApi的Token
+            </summary>
+            <param name="ak"></param>
+            <param name="sk"></param>
+            <returns>成功返回token, 失败返回null</returns>
+        </member>
+        <member name="M:Baidu.Aip.Auth.Hex(System.Byte[])">
+            <summary>
+            16进制表示
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Utils.StreamToString(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            read stream to string. Will close the steam !
+            </summary>
+            <param name="ss"></param>
+            <param name="enc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Utils.ParseQueryString(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            query dictionary to string
+            </summary>
+            <param name="querys"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Utils.UriEncode(System.String,System.Boolean)">
+            <summary>
+            UriEncode
+            </summary>
+            <param name="input"></param>
+            <param name="encodeSlash"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Face.Face.FaceDetect(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            人脸检测
+            </summary>
+            <param name="image"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Face.Face.FaceMatch(System.Collections.Generic.IEnumerable{System.Byte[]},System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            人脸比对
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.Face.Group.GetUsers(System.String,System.Int32,System.Int32)">
+            <summary>
+            组内用户列表查询
+            </summary>
+            <param name="groupId"></param>
+            <param name="start"></param>
+            <param name="end"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Face.Group.GetAllGroups(System.Int32,System.Int32)">
+            <summary>
+            该请求用于查询所有的组的列表
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Face.Group.AddUser(System.Collections.Generic.IEnumerable{System.String},System.String,System.String)">
+            <summary>
+            该请求用于将已经存在于人脸库中的用户添加到一个新的组。
+            </summary>
+            <param name="groupIds"></param>
+            <param name="uid"></param>
+            <param name="srcGroupId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Face.Group.DeleteUser(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            该请求用于将用户从某个组中删除，但不会删除用户在其它组的信息。当用户仅属于单个分组时，本接口将返回错误。
+            </summary>
+            <param name="groupIds"></param>
+            <param name="uid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Face.User.Register(System.Byte[],System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            人脸查找-人脸注册
+            该请求用于从人脸库中新增用户，包括指定用户所在组和上传用户人脸图片。 注：每个用户（uid）所能注册的最大人脸数量为5张。
+            </summary>
+            <param name="image"></param>
+            <param name="uid"></param>
+            <param name="userInfo"></param>
+            <param name="groupIds"></param>
+            <param name="actionType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Face.User.GetInfo(System.String)">
+            <summary>
+            该请求用于查询某用户的详细信息。
+            </summary>
+            <param name="uid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Face.User.Update(System.Byte[],System.String,System.String,System.String,System.String)">
+            <summary>
+            该请求用于从人脸库中更新用户图像，新上传的图像将覆盖原有图像
+            </summary>
+            <param name="image"></param>
+            <param name="uid"></param>
+            <param name="groupId"></param>
+            <param name="userInfo"></param>
+            <param name="actionType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Face.User.Delete(System.String)">
+            <summary>
+            该请求用于从人脸库中删除一个用户，包括用户所有图像和身份信息，同时也将从各个组中把用户删除。
+            </summary>
+            <param name="uid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Face.User.Delete(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            该请求用于从人脸库指定group中删除一个用户，包括用户所有图像和身份信息。
+            </summary>
+            <param name="uid"></param>
+            <param name="groupIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Face.User.Verify(System.Byte[],System.String,System.Collections.Generic.IEnumerable{System.String},System.Int32,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            该请求用于识别上传的图片是否为指定用户。
+            </summary>
+            <param name="image"></param>
+            <param name="uid"></param>
+            <param name="groupIds"></param>
+            <param name="topNum"></param>
+            <param name="extFileds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Face.User.Identify(System.Byte[],System.Collections.Generic.IEnumerable{System.String},System.Int32,System.Int32,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            指定组内用户与上传图像的相似度。
+            </summary>
+            <param name="image"></param>
+            <param name="groupIds"></param>
+            <param name="userTopNum"></param>
+            <param name="faceTopNum"></param>
+            <param name="extFileds"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Baidu.Aip.Nlp.Nlp">
+            <summary>
+            自然语言处理
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.WordSeg(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            中文分词
+            </summary>
+            <param name="query">文本内容</param>
+            <param name="options">附加参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.WordPos(System.String)">
+            <summary>
+            词性标注
+            </summary>
+            <param name="query">文本内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.Simnet(System.String,System.String)">
+            <summary>
+            短文本相似度
+            </summary>
+            <param name="text1">文本1</param>
+            <param name="text2">文本2</param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.WordEmbeddingVector(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            中文词向量表示
+            </summary>
+            <param name="query">文本内容</param>
+            <param name="options">附加参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.WordEmbeddingSimilarity(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            中文词义相似度
+            </summary>
+            <param name="word1">单词1</param>
+            <param name="word2">单词2</param>
+            <param name="options">附加参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.DNN_LM_Cn(System.String)">
+            <summary>
+            中文DNN语言模型
+            </summary>
+            <param name="text">文本内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.CommentTag(System.String,System.Int32)">
+            <summary>
+            评论观点抽取
+            </summary>
+            <param name="text">文本内容</param>
+            <param name="type">供12个类别,默认类别为4（餐厅）</param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.Lexer(System.String)">
+            <summary>
+            词法分析
+            </summary>
+            <param name="text">文本内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.SentimentClassify(System.String)">
+            <summary>
+            情感倾向分析
+            </summary>
+            <param name="text">文本内容</param>
+            <returns></returns>
+        </member>
+        <member name="T:Baidu.Aip.Ocr.Ocr">
+            <summary>
+            文字识别
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.GeneralWithLocatin(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            通用文字识别(带位置信息)
+            </summary>
+            <param name="image">图片字节数组</param>
+            <param name="options">可选参数
+                <list type="bullet">
+                    <item>
+                        <description> <c>detect_direction</c> : true/false </description>
+                    </item>
+                    <item>
+                        <description> <c>language_type</c> : 识别语言类型，若不传则默认为CHN_ENG。 可选值包括
+                            <list type="table">
+                            <listheader>
+                                <term>值</term>
+                                <description>含义</description>
+                            </listheader>
+                            <item> <term>CHN_ENG</term> <description>中英混合</description> </item>
+                            <item> <term>ENG</term> <description>英文</description> </item>
+                            <item> <term>POR</term> <description>葡萄牙语</description> </item>
+                            <item> <term>FRE</term> <description>法语</description> </item>
+                            <item> <term>GER</term> <description>德语</description> </item>
+                            <item> <term>ITA</term> <description>意大利语</description> </item>
+                            <item> <term>SPA</term> <description>西班牙语</description> </item>
+                            <item> <term>RUS</term> <description>俄语</description> </item>
+                            <item> <term>JAP</term> <description>日语</description> </item>
+                            <item> <term>KOR</term> <description>韩语</description> </item>
+                            </list>
+                        </description>
+                    </item>
+                    <item>
+                        <description> <c>recognize_granularity</c> : big/small </description>
+                    </item>
+                    <item>
+                        <description> <c>mask</c> : 表示mask区域的黑白灰度图片，白色代表选中, base64编码 </description>
+                    </item>
+                    <item>
+                        <description> <c>detect_language</c> : true/false </description>
+                    </item>
+                </list>
+            </param>
+            <returns>JObject</returns>
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.GeneralBasic(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            通用文字识别
+            </summary>
+            <param name="image">图片字节数组</param>
+            <param name="options">可选参数
+                <list type="bullet">
+                    <item>
+                        <description> <c>detect_direction</c> : true/false </description>
+                    </item>
+                    <item>
+                        <description> <c>language_type</c> : 识别语言类型，若不传则默认为CHN_ENG。 可选值包括
+                            <list type="table">
+                            <listheader>
+                                <term>值</term>
+                                <description>含义</description>
+                            </listheader>
+                            <item> <term>CHN_ENG</term> <description>中英混合</description> </item>
+                            <item> <term>ENG</term> <description>英文</description> </item>
+                            <item> <term>POR</term> <description>葡萄牙语</description> </item>
+                            <item> <term>FRE</term> <description>法语</description> </item>
+                            <item> <term>GER</term> <description>德语</description> </item>
+                            <item> <term>ITA</term> <description>意大利语</description> </item>
+                            <item> <term>SPA</term> <description>西班牙语</description> </item>
+                            <item> <term>RUS</term> <description>俄语</description> </item>
+                            <item> <term>JAP</term> <description>日语</description> </item>
+                            <item> <term>KOR</term> <description>韩语</description> </item>
+                            </list>
+                        </description>
+                    </item>
+                    <item>
+                        <description> <c>recognize_granularity</c> : big/small </description>
+                    </item>
+                    <item>
+                        <description> <c>mask</c> : 表示mask区域的黑白灰度图片，白色代表选中, base64编码 </description>
+                    </item>
+                    <item>
+                        <description> <c>detect_language</c> : true/false </description>
+                    </item>
+                </list>
+            </param>
+            <returns>JObject</returns>
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.WebImage(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            网图识别
+            </summary>
+            <param name="image">图片字节数组</param>
+            <param name="options">可选参数
+                <list type="bullet">
+                    <item>
+                        <description> <c>detect_direction</c> : true/false </description>
+                    </item>
+                    <item>
+                        <description> <c>language_type</c> : 识别语言类型，若不传则默认为CHN_ENG。 可选值包括
+                            <list type="table">
+                            <listheader>
+                                <term>值</term>
+                                <description>含义</description>
+                            </listheader>
+                            <item> <term>CHN_ENG</term> <description>中英混合</description> </item>
+                            <item> <term>ENG</term> <description>英文</description> </item>
+                            <item> <term>POR</term> <description>葡萄牙语</description> </item>
+                            <item> <term>FRE</term> <description>法语</description> </item>
+                            <item> <term>GER</term> <description>德语</description> </item>
+                            <item> <term>ITA</term> <description>意大利语</description> </item>
+                            <item> <term>SPA</term> <description>西班牙语</description> </item>
+                            <item> <term>RUS</term> <description>俄语</description> </item>
+                            <item> <term>JAP</term> <description>日语</description> </item>
+                            <item> <term>KOR</term> <description>韩语</description> </item>
+                            </list>
+                        </description>
+                    </item>
+                    <item>
+                        <description> <c>recognize_granularity</c> : big/small </description>
+                    </item>
+                    <item>
+                        <description> <c>mask</c> : 表示mask区域的黑白灰度图片，白色代表选中, base64编码 </description>
+                    </item>
+                    <item>
+                        <description> <c>detect_language</c> : true/false </description>
+                    </item>
+                </list>
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.GeneralEnhanced(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            生僻字识别
+            </summary>
+            <param name="image">图片字节数组</param>
+            <param name="options">可选参数
+                <list type="bullet">
+                    <item>
+                        <description> <c>detect_direction</c> : true/false </description>
+                    </item>
+                    <item>
+                        <description> <c>language_type</c> : 识别语言类型，若不传则默认为CHN_ENG。 可选值包括
+                            <list type="table">
+                            <listheader>
+                                <term>值</term>
+                                <description>含义</description>
+                            </listheader>
+                            <item> <term>CHN_ENG</term> <description>中英混合</description> </item>
+                            <item> <term>ENG</term> <description>英文</description> </item>
+                            <item> <term>POR</term> <description>葡萄牙语</description> </item>
+                            <item> <term>FRE</term> <description>法语</description> </item>
+                            <item> <term>GER</term> <description>德语</description> </item>
+                            <item> <term>ITA</term> <description>意大利语</description> </item>
+                            <item> <term>SPA</term> <description>西班牙语</description> </item>
+                            <item> <term>RUS</term> <description>俄语</description> </item>
+                            <item> <term>JAP</term> <description>日语</description> </item>
+                            <item> <term>KOR</term> <description>韩语</description> </item>
+                            </list>
+                        </description>
+                    </item>
+                    <item>
+                        <description> <c>recognize_granularity</c> : big/small </description>
+                    </item>
+                    <item>
+                        <description> <c>mask</c> : 表示mask区域的黑白灰度图片，白色代表选中, base64编码 </description>
+                    </item>
+                    <item>
+                        <description> <c>detect_language</c> : true/false </description>
+                    </item>
+                </list>
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.IdCardFront(System.Byte[])">
+            <summary>
+            身份证正面识别
+            </summary>
+            <param name="image"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.IdCardBack(System.Byte[])">
+            <summary>
+            身份证反面识别
+            </summary>
+            <param name="image"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.BankCard(System.Byte[])">
+            <summary>
+            银行卡识别
+            </summary>
+            <param name="image"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -43,6 +43,8 @@ namespace AutoWork
         public const int SC_MAXIMIZE = 0xF030;
         public const uint WM_SYSCOMMAND2 = 0x0112;
         public const uint SC_MAXIMIZE2 = 0xF030;
+        public static string apiKey = ConfigurationManager.AppSettings["apiKey"];
+         public static string apiSecret = ConfigurationManager.AppSettings["apiSecret"];
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
         [DllImport("user32.dll")]
@@ -136,7 +138,7 @@ namespace AutoWork
             bitmap.Save(@""+ConfigurationManager.AppSettings["cachePath"] + fileName, ImageFormat.Png);
             bitmap.Dispose();
             
-            var client = new Baidu.Aip.Face.Face("hmkG2UIjblnlp53uA5UBsSSD", "N8vdWhT9vsNqyOX9fcmvGIem2MXmz9aK");
+            var client = new Baidu.Aip.Face.Face(apiKey,apiSecret);
             var image1 = File.ReadAllBytes(@""+ConfigurationManager.AppSettings["cachePath"] + fileName);
             var image2 = File.ReadAllBytes(@""+ConfigurationManager.AppSettings["imgPath"]);
           
