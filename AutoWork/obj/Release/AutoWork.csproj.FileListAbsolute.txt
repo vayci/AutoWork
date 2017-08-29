@@ -1,0 +1,16 @@
+C:\Users\Red\Documents\SharpDevelop Projects\AutoWork\AutoWork\bin\Release\AutoWork.exe.config
+C:\Users\Red\Documents\SharpDevelop Projects\AutoWork\AutoWork\bin\Release\AutoWork.exe
+C:\Users\Red\Documents\SharpDevelop Projects\AutoWork\AutoWork\bin\Release\AForge.Controls.dll
+C:\Users\Red\Documents\SharpDevelop Projects\AutoWork\AutoWork\bin\Release\AForge.dll
+C:\Users\Red\Documents\SharpDevelop Projects\AutoWork\AutoWork\bin\Release\AForge.Imaging.dll
+C:\Users\Red\Documents\SharpDevelop Projects\AutoWork\AutoWork\bin\Release\AForge.Math.dll
+C:\Users\Red\Documents\SharpDevelop Projects\AutoWork\AutoWork\bin\Release\AForge.Video.DirectShow.dll
+C:\Users\Red\Documents\SharpDevelop Projects\AutoWork\AutoWork\bin\Release\AForge.Video.dll
+C:\Users\Red\Documents\SharpDevelop Projects\AutoWork\AutoWork\bin\Release\AipSdk.dll
+C:\Users\Red\Documents\SharpDevelop Projects\AutoWork\AutoWork\bin\Release\Newtonsoft.Json.dll
+C:\Users\Red\Documents\SharpDevelop Projects\AutoWork\AutoWork\bin\Release\AipSdk.xml
+C:\Users\Red\Documents\SharpDevelop Projects\AutoWork\AutoWork\bin\Release\Newtonsoft.Json.xml
+C:\Users\Red\Documents\SharpDevelop Projects\AutoWork\AutoWork\obj\Release\AutoWork.csprojResolveAssemblyReference.cache
+C:\Users\Red\Documents\SharpDevelop Projects\AutoWork\AutoWork\obj\Release\AutoWork.MainForm.resources
+C:\Users\Red\Documents\SharpDevelop Projects\AutoWork\AutoWork\obj\Release\AutoWork.csproj.GenerateResource.Cache
+C:\Users\Red\Documents\SharpDevelop Projects\AutoWork\AutoWork\obj\Release\AutoWork.exe
