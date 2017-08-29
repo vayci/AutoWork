@@ -1,6 +1,6 @@
 ﻿/*
- * $邮箱：zhwei@grgbanking.com
- * 用户： zhwei
+ * $邮箱：vayci2012@163.com
+ * 用户： vayci
  * 日期: 2017-08-27
  * 时间: 15:39
  * 
@@ -32,29 +32,38 @@ namespace AutoWork
 	/// </summary>
 	public partial class MainForm : Form
 	{
+		
 		[DllImport("user32.dll", EntryPoint = "PostMessage")]
         public static extern int PostMessage(IntPtr hwnd, int wMsg, int wParam, int lParam);
         [DllImport("User32.dll ", EntryPoint = "FindWindow")]
-        private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);//关键方法
+        private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
         [DllImport("user32.dll", SetLastError = true)]
         private static extern int SendMessage(IntPtr HWnd, uint Msg, int WParam, int LParam);
+       
         public const int WM_SYSCOMMAND = 0x112;
         public const int SC_MINIMIZE = 0xF020;
         public const int SC_MAXIMIZE = 0xF030;
         public const uint WM_SYSCOMMAND2 = 0x0112;
         public const uint SC_MAXIMIZE2 = 0xF030;
-        public static string apiKey = ConfigurationManager.AppSettings["apiKey"];
-         public static string apiSecret = ConfigurationManager.AppSettings["apiSecret"];
+      
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
         [DllImport("user32.dll")]
         public static extern void SwitchToThisWindow(IntPtr hWnd, bool fAltTab);
+        
+        
         System.Windows.Forms.Timer QTimer = null;
-		string res;
-		Boolean timerFlag =false;
+        Boolean timerFlag =false;
+		public string res;
+		
+		
 		FilterInfoCollection videoDevices;
 		VideoCaptureDevice videoSource;
 		public int selectedDeviceIndex = 0;
+		
+		public static string apiKey = ConfigurationManager.AppSettings["apiKey"];
+        public static string apiSecret = ConfigurationManager.AppSettings["apiSecret"];
+        
 		public MainForm()
 		{
 			InitializeComponent();
@@ -69,11 +78,10 @@ namespace AutoWork
         {
            videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             selectedDeviceIndex = 0;
-            videoSource = new VideoCaptureDevice(videoDevices[selectedDeviceIndex].MonikerString);//连接摄像头。
+            videoSource = new VideoCaptureDevice(videoDevices[selectedDeviceIndex].MonikerString);//connect camera
             
             videoSource.VideoResolution = videoSource.VideoCapabilities[selectedDeviceIndex];
             videoSourcePlayer1.VideoSource = videoSource;
-            // set NewFrame event handler
             videoSourcePlayer1.Start();  
         }
 		
@@ -120,13 +128,12 @@ namespace AutoWork
 			
 		}
 
-        public void faceMatchingTask(object source, EventArgs e)
+        private void faceMatchingTask(object source, EventArgs e)
         {
- 
             faceMatching();
         }
  
-        public void faceMatching()
+        private void faceMatching()
         {
         	if (videoSource == null){
         		MessageBox.Show("请先连接摄像头!");
@@ -143,9 +150,8 @@ namespace AutoWork
             var image2 = File.ReadAllBytes(@""+ConfigurationManager.AppSettings["imgPath"]);
           
             var images = new byte[][] {image1, image2};
-
-            // 人脸对比
             var result = client.FaceMatch(images);
+           
             JToken  num ;
             try {
             	    num = result["result"][0];
@@ -158,10 +164,6 @@ namespace AutoWork
             StringBuilder sb = new StringBuilder();
             foreach(JProperty jp in num)
 			{
-            	
-//			    sb.AppendLine(String.Format(@"{0}：{1}"
-//			        ,jp.Name
-//			        ,jp.Value));
             	if(jp.Name=="score"){
             		if(Convert.ToDouble(jp.Value)>Convert.ToDouble(ConfigurationManager.AppSettings["threshold"])){
             		res = jp.Value.ToString();
@@ -182,8 +184,7 @@ namespace AutoWork
             if (processs != null)
             {
                 foreach (Process p in processs)
-                {
-                	
+                { 
                     IntPtr handle = FindWindow(null, p.MainWindowTitle);
                     //IntPtr handle = FindWindow("YodaoMainWndClass",null);
                     PostMessage(handle, WM_SYSCOMMAND, SC_MINIMIZE, 0);
@@ -191,7 +192,8 @@ namespace AutoWork
             }
         }
         
-       void openApplication(){
+     	 private void openApplication()
+     	 {
          	Process[] processes = Process.GetProcessesByName(ConfigurationManager.AppSettings["broswer"]);
             if (processes.Length > 0)
             {
@@ -201,27 +203,23 @@ namespace AutoWork
             }
          }
          
-		void MainFormClosed(object sender, EventArgs e)
+		private void MainFormClosed(object sender, EventArgs e)
 		{
 			if (videoSource != null){
 						MessageBoxButtons messButton = MessageBoxButtons.YesNo;
 						 DialogResult dr = MessageBox.Show("是否最小化继续运行?", "退出系统", messButton);
 						 
-						 if (dr == DialogResult.Yes)//如果点击“确定”按钮
+						 if (dr == DialogResult.Yes)
 						 {
 							Application.Exit(); 
 						 }
-						 else if(dr == DialogResult.No)//如果点击“取消”按钮
+						 else if(dr == DialogResult.No)
 						{
 							System.Environment.Exit(0);  
 						}
 			}else{
 				System.Environment.Exit(0);  
 			}
-		}
-		void MainFormLoad(object sender, EventArgs e)
-		{
-	
 		}
 		
 	}
