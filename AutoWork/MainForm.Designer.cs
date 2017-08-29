@@ -134,7 +134,6 @@ namespace AutoWork
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "AutoWork By Red";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormClosed);
-			this.Load += new System.EventHandler(this.MainFormLoad);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
